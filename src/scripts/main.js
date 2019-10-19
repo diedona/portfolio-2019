@@ -6,6 +6,3 @@ import '@fortawesome/fontawesome-free/js/brands'
 
 // ENTRY SCSS
 import '../styles/main.scss';
-
-// JQUERY CUSTOM EVENTS
-import * as jQueryScripts from './jquery-scripts';
