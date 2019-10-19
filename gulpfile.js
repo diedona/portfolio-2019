@@ -1,15 +1,37 @@
 const gulp = require('gulp');
-const concat = require('gulp-concat');
-const uglify = require('gulp-uglify');
-const cssnano = require('cssnano');
-const replace = require('gulp-replace');
+const useref = require('gulp-useref');
+const gulpif = require('gulp-if');
+const minify = require('gulp-minify');
+const minifyCss = require('gulp-clean-css');
+const del = require('del');
 
-// Gulp task to copy HTML files to output directory
-function copyHtmlTask() {
+function userefTask() {
     return gulp.src('./src/**/*.html')
-    .pipe(gulp.dest('./dist'));
+        .pipe(useref())
+        .pipe(gulpif('*.js', minify()))
+        .pipe(gulpif('*.css', minifyCss()))
+        .pipe(gulp.dest('dist'));
+}
+
+function copyImagesTask() {
+    return gulp.src('./src/images/*')
+        .pipe(gulp.dest('dist/images'));
+}
+
+function copyFaviconTask() {
+    return gulp.src('*.ico')
+        .pipe(gulp.dest('dist'));
+}
+
+function deleteDistTask() {
+    return del(['./dist']);
 }
 
 exports.default = gulp.series(
-    copyHtmlTask
+    deleteDistTask,
+    gulp.parallel(
+        userefTask,
+        copyImagesTask,
+        copyFaviconTask
+    )
 )
