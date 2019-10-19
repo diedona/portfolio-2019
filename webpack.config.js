@@ -1,11 +1,11 @@
 const path = require('path');
-const webpack = require('webpack');
 const htmlWebpackPlugin = require("html-webpack-plugin");
 const miniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require("webpack");
 
 module.exports = {
   entry: {
-    main: './src/scripts/main.js',
+    main: ['./src/scripts/main.js', 'jquery'],
     index: './src/scripts/index.js',
     objetivos: './src/scripts/objetivos.js'
   },
@@ -49,23 +49,28 @@ module.exports = {
     ]
   },
 
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendors: { test: /[\\/]node_modules[\\/]/, name: "vendors", chunks: "all" }
+      }
+    }
+  },
+
   plugins: [
-    new webpack.ProvidePlugin({
-      $: 'jquery', jQuery: 'jquery' 
-    }),
     new htmlWebpackPlugin({
       template: "./src/index.html",
       filename: "./index.html",
-      chunks: ['main', 'index']
+      chunks: ['vendors', 'main', 'index']
     }),
     new htmlWebpackPlugin({
       template: "./src/objetivos.html",
       filename: "./objetivos.html",
-      chunks: ['main', 'objetivos']
+      chunks: ['vendors', 'main', 'objetivos']
     }),
     new miniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"
     })
-  ]
+  ],
 };
