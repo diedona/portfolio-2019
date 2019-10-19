@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
 }
@@ -22,6 +23,38 @@ h1 {
 
 .container-fluid {
   padding-left: 30%;
+}
+
+.btn-md {
+  min-width: 180px;
+  min-height: 45px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.btn-dark {
+  color: #fff;
+  background-color: #231f20;
+  border-color: #4c4246;
+}
+
+.btn-dark:hover {
+  color: #fff;
+  background-color: #584149;
+  border-color: #583c46;
+}
+
+.btn-dark:not(:disabled):not(.disabled):active,
+.btn-dark:not(:disabled):not(.disabled).active,
+.show > .btn-dark.dropdown-toggle {
+  color: #fff;
+  background-color: #6f4d59;
+  border-color: #c5b9bd;
+}
+
+.btn-dark:focus,
+.btn-dark.focus {
+  box-shadow: 0 0 0 0.2rem rgba(90, 71, 59, 0.5);
 }
 
 @media (min-width: 991.98px) and (max-width: 1280.98px) {
