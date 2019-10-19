@@ -26,7 +26,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|svg|jpg|bmp|gif)$/,
+        test: /\.(png|svg|jpg|jpeg|bmp|gif)$/,
         loader: 'file-loader',
         options: {
           outputPath: 'images',
