@@ -4,7 +4,8 @@
   "description": "",
   "private": true,
   "scripts": {
-    "dev": "live-server --host=localhost --port=8080 --open=./src/index.html"
+    "dev": "live-server --host=localhost --port=8080 --open=./src/index.html",
+    "build": "gulp"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +16,11 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.11.2",
+    "cssnano": "^4.1.10",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-replace": "^1.0.0",
+    "gulp-uglify": "^3.0.2",
     "live-server": "^1.2.1"
   }
 }
