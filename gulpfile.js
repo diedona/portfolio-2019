@@ -13,6 +13,11 @@ function userefTask() {
         .pipe(gulp.dest('dist'));
 }
 
+function copyFontsTask() {
+    return gulp.src('./src/webfonts/*.*')
+        .pipe(gulp.dest('dist/webfonts'));
+}
+
 function copyImagesTask() {
     return gulp.src('./src/images/*')
         .pipe(gulp.dest('dist/images'));
@@ -32,6 +37,7 @@ exports.default = gulp.series(
     gulp.parallel(
         userefTask,
         copyImagesTask,
-        copyFaviconTask
+        copyFaviconTask,
+        copyFontsTask
     )
 )
