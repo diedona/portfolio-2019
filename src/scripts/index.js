@@ -16,14 +16,14 @@
 
         $(document).on('click', '#btnObjetivos', function (evt) {
             evt.preventDefault();
-            mainContent.html(content.objetivos);
             scrollToTop();
+            mainContent.html(content.objetivos);
         });
 
         $(document).on('click', '.btn-go-home', function (evt) {
             evt.preventDefault();
-            mainContent.html(content.home);
             scrollToTop();
+            mainContent.html(content.home);
         });
 
     }); // jQuery
@@ -36,7 +36,7 @@
     }
 
     function scrollToTop() {
-        $("html, body").animate({ scrollTop: 0 }, "slow");
+        $("html, body").animate({ scrollTop: 0 }, "fast");
     }
 
 }());
