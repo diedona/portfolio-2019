@@ -150,8 +150,7 @@ a.nav-link {
   }
 
   .body-background {
-    background-position: center;
-    background-image: none;
+    background-image: url("../images/blue.jpg");
   }
 
   h2 {
