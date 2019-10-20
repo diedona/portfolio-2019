@@ -19,8 +19,8 @@ h2 {
 }
 
 .body-background {
-  background-color: #241e20;
-  background-image: url("../images/light-bulb.jpeg");
+  background-color: #0b2f45;
+  background-image: url("../images/light-bulb-blue.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center left;
@@ -44,22 +44,22 @@ h2 {
 
 .btn-dark {
   color: #fff;
-  background-color: #231f20;
-  border-color: #4c4246;
+  background-color: #215463;
+  border: 2px solid #184a58;
 }
 
 .btn-dark:hover {
   color: #fff;
-  background-color: #584149;
-  border-color: #583c46;
+  background-color: #2b697b;
+  border-color: #1f5e6f;
 }
 
 .btn-dark:not(:disabled):not(.disabled):active,
 .btn-dark:not(:disabled):not(.disabled).active,
 .show > .btn-dark.dropdown-toggle {
   color: #fff;
-  background-color: #6f4d59;
-  border-color: #c5b9bd;
+  background-color: #2b697b;
+  border-color: #1f5e6f;
 }
 
 .btn-dark:focus,
@@ -68,30 +68,73 @@ h2 {
 }
 
 .list-group-dark .list-group-item {
-  background-color: rgba(62, 40, 47, 0.5411764705882353);
-  border: 2px solid #241e20;
   margin: 10px 0 10px 0;
   border-radius: 5px;
   min-height: 135px;
+  border: none;
 }
 
-.list-group-dark .list-group-item-action {
-  color: #fff;
-  margin-right: 15px;
+.nav-tabs {
+  background-color: #2a9ac5;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: none;
+  padding: 5px;
 }
 
-.nav-pills .nav-link.active,
-.nav-pills .show > .nav-link {
-  background-color: #332428;
+li.nav-item {
+  width: 130px;
+  text-align: center;
+  color: #0b2f45 !important;
+  margin-right: 25px;
 }
 
-.nav-item {
-  margin-right: 15px;
+li.nav-item:hover {
+  border-left: none;
+  border-top: none;
+  border-right: none;
+  border-radius: 0;
+  background-color: rgba(255, 255, 255, 0.14);
+}
+
+.nav-tabs .nav-item {
+  margin-bottom: 0px;
+}
+
+.nav-tabs .nav-link {
+  border: 1px solid #7ac2de;
+  border-radius: 5px;
+  /* border-top-left-radius: 0;
+  border-top-right-radius: 0; */
 }
 
 a.nav-link {
-  color: #964258;
-  background-color: #272324;
+  color: #fff;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  border-left: none;
+  border-top: none;
+  border-right: none;
+  border-bottom: 3px solid #fff;
+  border-radius: 0;
+  font-weight: bold;
+  color: #fff;
+  background-color: transparent;
+}
+
+.tab-content {
+  color: #464c49;
+  padding: 5px 5px 20px 5px;
+  background-color: #fff;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.card {
+  border: none;
+  min-height: 130px;
 }
 
 @media (min-width: 991.98px) and (max-width: 1280.98px) {
