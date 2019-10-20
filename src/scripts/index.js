@@ -2,7 +2,8 @@
 
     const content = {
         home: '',
-        objetivos: ''
+        objetivos: '',
+        skills: ''
     };
 
     $(function () {
@@ -20,6 +21,12 @@
             mainContent.html(content.objetivos);
         });
 
+        $(document).on('click', '#btnSkills', function (evt) {
+            evt.preventDefault();
+            scrollToTop();
+            mainContent.html(content.skills);
+        });
+
         $(document).on('click', '.btn-go-home', function (evt) {
             evt.preventDefault();
             scrollToTop();
@@ -32,6 +39,11 @@
         const objetivos = $('<div>');
         objetivos.load('./partials/objetivos.html', () => {
             content.objetivos = objetivos.html();
+        });
+
+        const skills = $('<div>');
+        skills.load('./partials/skills.html', () => {
+            content.skills = skills.html();
         });
     }
 
