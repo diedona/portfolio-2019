@@ -83,4 +83,8 @@ h2 {
     background-position: center;
     background-image: none;
   }
+
+  h2 {
+    font-size: 3em;
+  }
 }
