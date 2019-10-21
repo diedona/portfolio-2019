@@ -1,5 +1,7 @@
 (function () {
 
+    let mainContent;
+
     const content = {
         home: '',
         objetivos: '',
@@ -18,9 +20,9 @@
 
         loadAllContent();
         loadGithubRepos();
-        avoidBackButton();
+        handlePopState();
 
-        const mainContent = $("#mainContent");
+        mainContent = $("#mainContent");
         mainContent.load('./partials/home.html', (html) => {
             content.home = html;
         });
@@ -29,30 +31,33 @@
             evt.preventDefault();
             scrollToTop();
             mainContent.html(content.objetivos);
+            window.history.pushState(null, "objetivos", null);
         });
 
         $(document).on('click', '#btnSkills', function (evt) {
             evt.preventDefault();
             scrollToTop();
             mainContent.html(content.skills);
+            window.history.pushState(null, "skills", null);
         });
 
         $(document).on('click', '#btnContato', function (evt) {
             evt.preventDefault();
             scrollToTop();
             mainContent.html(content.contato);
+            window.history.pushState(null, "contato", null);
         });
 
         $(document).on('click', '#btnGithub', function (evt) {
             evt.preventDefault();
             scrollToTop();
             mainContent.html(generateHtmlForGithub());
+            window.history.pushState(null, "github", null);
         });
 
         $(document).on('click', '.btn-go-home', function (evt) {
             evt.preventDefault();
-            scrollToTop();
-            mainContent.html(content.home);
+            history.back()
         });
 
     }); // jQuery
@@ -61,9 +66,20 @@
         $("html, body").animate({ scrollTop: 0 }, "fast");
     }
 
+    function goHome() {
+        scrollToTop();
+        mainContent.html(content.home);
+    }
+
     function loadGithubRepos() {
         $.getJSON(githubData.url, (data) => {
             githubData.data = data;
+        })
+    }
+
+    function handlePopState() {
+        $(window).on('popstate', function (e) {
+            goHome();
         })
     }
 
@@ -116,12 +132,6 @@
 
     function getBrDate(iso) {
         return moment(iso).format("DD/MM/YYYY HH:mm");
-    }
-    function avoidBackButton() {
-        window.history.pushState(null, "", window.location.href);
-        window.onpopstate = function () {
-            window.history.pushState(null, "", window.location.href);
-        };
     }
 
 }());
