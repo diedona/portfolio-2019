@@ -160,6 +160,12 @@ a.nav-link {
   height: calc(100% - 20px);
 }
 
+.card-repo {
+  color: #ffffff;
+  height: 100%;
+  background-color: rgba(50, 103, 132, 0.19);
+}
+
 @media (min-width: 991.98px) and (max-width: 1280.98px) {
   .container-fluid {
     padding-left: 40%;
