@@ -42,6 +42,29 @@ h2 {
   margin-top: 10px;
 }
 
+.contato-explicacao {
+  border-left: 2px solid #20465d;
+  background-color: rgba(33, 85, 115, 0.25098039215686274);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.btn-contato span {
+  position: relative;
+  top: -5px;
+}
+
+.link-contato {
+  color: #fff;
+  text-align: center;
+  display: block;
+  height: 100%;
+}
+
+.link-contato:hover {
+  color: #33a0e2;
+}
+
 .btn-dark {
   color: #fff;
   background-color: #215463;

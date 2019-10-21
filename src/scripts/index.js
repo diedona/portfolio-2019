@@ -3,7 +3,8 @@
     const content = {
         home: '',
         objetivos: '',
-        skills: ''
+        skills: '',
+        contato: ''
     };
 
     $(function () {
@@ -27,6 +28,12 @@
             mainContent.html(content.skills);
         });
 
+        $(document).on('click', '#btnContato', function (evt) {
+            evt.preventDefault();
+            scrollToTop();
+            mainContent.html(content.contato);
+        });
+
         $(document).on('click', '.btn-go-home', function (evt) {
             evt.preventDefault();
             scrollToTop();
@@ -34,6 +41,10 @@
         });
 
     }); // jQuery
+
+    function scrollToTop() {
+        $("html, body").animate({ scrollTop: 0 }, "fast");
+    }
 
     function loadAllContent() {
         const objetivos = $('<div>');
@@ -45,10 +56,11 @@
         skills.load('./partials/skills.html', () => {
             content.skills = skills.html();
         });
-    }
 
-    function scrollToTop() {
-        $("html, body").animate({ scrollTop: 0 }, "fast");
+        const contato = $('<div>');
+        contato.load('./partials/contato.html', () => {
+            content.contato = contato.html();
+        });
     }
 
 }());
