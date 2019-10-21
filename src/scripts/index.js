@@ -18,6 +18,7 @@
 
         loadAllContent();
         loadGithubRepos();
+        avoidBackButton();
 
         const mainContent = $("#mainContent");
         mainContent.load('./partials/home.html', (html) => {
@@ -115,6 +116,12 @@
 
     function getBrDate(iso) {
         return moment(iso).format("DD/MM/YYYY HH:mm");
+    }
+    function avoidBackButton() {
+        window.history.pushState(null, "", window.location.href);
+        window.onpopstate = function () {
+            window.history.pushState(null, "", window.location.href);
+        };
     }
 
 }());
