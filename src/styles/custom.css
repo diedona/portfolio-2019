@@ -18,6 +18,16 @@ h2 {
   margin-bottom: 15px;
 }
 
+a {
+  color: #66ceff;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover {
+  color: #00adff;
+}
+
 .loading-modal {
   position: fixed;
   z-index: 999;
