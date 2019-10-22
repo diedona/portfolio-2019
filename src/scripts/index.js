@@ -10,16 +10,14 @@
         github: ''
     };
 
-    let githubData = {
-        url: 'https://api.github.com/users/diedona/repos?sort=created&direction=desc&page=1&per_page=10',
-        data: [],
-        html: ''
+    let gitSettings = {
+        url: 'https://portfolio-diedona.azurewebsites.net/api/GetGitRepos?code=L/aNxYb3dzCvbAH8zKqu2xI9SawDdCvO8VcPbbYyE2atwLclss539g==',
+        data: []
     };
 
     $(function () {
 
         loadAllContent();
-        loadGithubRepos();
         handlePopState();
 
         mainContent = $("#mainContent");
@@ -51,7 +49,7 @@
         $(document).on('click', '#btnGithub', function (evt) {
             evt.preventDefault();
             scrollToTop();
-            mainContent.html(generateHtmlForGithub());
+            loadRepositoriesShowHTML();
             window.history.pushState(null, "github", null);
         });
 
@@ -69,12 +67,6 @@
     function goHome() {
         scrollToTop();
         mainContent.html(content.home);
-    }
-
-    function loadGithubRepos() {
-        $.getJSON(githubData.url, (data) => {
-            githubData.data = data;
-        })
     }
 
     function handlePopState() {
@@ -105,12 +97,28 @@
         });
     }
 
-    function generateHtmlForGithub() {
+    function loadRepositoriesShowHTML() {
+        if (gitSettings.data.length === 0) {
+            showHideLoading(true);
+            $.getJSON(gitSettings.url, (data) => {
+                gitSettings.data = data;
+                mountAllHtml();
+                showHideLoading(false);
+            })
+        } else {
+            showHtml();
+        }
+    }
+
+    function showHtml() {
+        mainContent.html(content.github);
+    }
+
+    function mountAllHtml() {
         const page = $(content.github);
-        console.log(page.html());
         let html = '';
 
-        $.each(githubData.data, (idx, repo) => {
+        $.each(gitSettings.data, (idx, repo) => {
             html += `
                 <div class='col-md-4 mb-3'>
                     <div class="card card-repo shadow-sm">
@@ -127,11 +135,20 @@
         });
 
         $('#gitHubRepos', page).html(html);
-        return page.html();
+        content.github = page.html();
+        mainContent.html(content.github);
     }
 
     function getBrDate(iso) {
         return moment(iso).format("DD/MM/YYYY HH:mm");
+    }
+
+    function showHideLoading(show) {
+        if (show) {
+            $(".loading-modal").show();
+        } else {
+            $(".loading-modal").hide();
+        }
     }
 
 }());
